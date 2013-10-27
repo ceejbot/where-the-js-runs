@@ -2,11 +2,18 @@
 
 ## Intro
 
-### Tracking my cat
+About fifteen years ago, I had a cat who liked to wander. He'd vanish off to goodness knows where in the neighborhood. I'd spot him sitting high up on a neighbor's roof, meowing down at me to say hi. I always wondered, where the heck does that cat *go*? Wouldn't it be great if I could track him?
+
+So I set out to figure out how.
 
 - use radios? transponder on his collar? triangulate?
 - wait, what kind of radio? how do I even figure this out?
-- dream of tracking my cat went unfulfilled
+- dream of tracking my cat went unfulfilled and I forgot about it.
+
+### Hardware has changed
+
+I went to an Arduino + node.js hardware hacking day last year out of curiosity. I hadn't heard of Arduinos before, but I was super into Node. Turns out, all this hardware stuff had 
+
 
 Maybe you have a dream like that. Something you've always wanted to do, if only you could.
 
@@ -80,6 +87,10 @@ HDMI out, ethernet, audio out, 3 usb connectors, a GPU with H264 in hardware, an
 
 
 ### How to pick a platform
+
+Do you need this to run on a battery off somewhere? Do you need it to be small? You're going Arduino.
+
+Do you have lots and lots of sensors and servos to connect up?
 
 ### How to learn how to build things
 
