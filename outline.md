@@ -7,7 +7,7 @@ About fifteen years ago, I had a cat who liked to wander. He'd vanish off to goo
 So I set out to figure out how.
 
 - use radios? transponder on his collar? triangulate?
-- wait, what kind of radio? how do I even figure this out?
+- wait, what kind of radio? that radio looks way too big to put on the cat. Should I set three up in corners of my yard, but a transponder on him, and triangulate? How can I do this without spending a zillion dollars?
 - dream of tracking my cat went unfulfilled and I forgot about it.
 
 ### The dream
@@ -53,6 +53,7 @@ You'll wire up input devices to some of the pins. For example, you might hook up
 
 Then you make sure everything has power.
 
+## Boards
 
 ### Survey of the possibilities
 
@@ -61,10 +62,10 @@ Then you make sure everything has power.
 [ closeup of Arduino ]
 
 This is the Arduino Uno, responsible for kicking off the current madness.
-  
+ 
 - 8-bit ATMega processors, 16MHz 
 - often not a lot of memory: 32K flash on the Uno
-- 14 digital IO pins, 6 of which can do PWM (which means variable output levels)
+- 14 digital IO pins, 6 of which can do PWM (which means variable output levels-- this is how you make an LED pulse easily)
 - 6 analog inputs
 - a 16 MHz ceramic resonator, which means it has a moderately precise real-time clock for timing operations
 
@@ -100,6 +101,8 @@ Now how much would you pay? How about $US 35?
 - run your home automation system with a control UI
 - run your home AV system & do DVR
 
+You can compile 
+
 #### Some other names to know
 
 Beaglebone Black
@@ -116,6 +119,7 @@ Espruino has its own JS interpreter.
 
 Tessell JITs the js to lua bytecodes & runs that. It is a lot like an Arduino in that you have an initialize routine & then a run-loop that goes forever.
 
+These platforms aren't available yet, but they'll be shipping soon. And they represent the future of hobby hardware development-- we're going to see more high-level languages running in surprising places.
 
 ## Putting the parts together
 
@@ -123,33 +127,46 @@ Tessell JITs the js to lua bytecodes & runs that. It is a lot like an Arduino in
 
 ### How to pick a platform
 
+Just getting started? Use an Arduino. Flash it with node-firmata, install Johnny-Five, and learn the basics of setting up circuits. Do this! It reduces the size of the problem space as you're getting started. You already know the language, after all. This lets you concentrate on building circuits that do what you want, and on reading data from sensors. It's easy to debug & fast to run new stuff.
+
+
 Size: do you need it to be tiny and battery-run? You're probably doing it with an Arduino or a variant.
 
 Lots and lots of sensors and servos? Probably an Arduino.
 
 Heavy processing load, like computer vision? Probably a Beagle.
 
-Need video output? Probably a Raspberry Pi.
+Need video output? Probably a Raspberry Pi. The Pi is an odd platform but it's easily available & lots of people have written software for it already.
 
 
-Do you need this to run on a battery off somewhere? Do you need it to be small? You're going Arduino.
 
-Do you have lots and lots of sensors and servos to connect up?
+### Power everything
 
+Electricity.
 
-### Where power comes from
+Now we come to one of those intimidating topics. Fear not, I say! There's a lot of stuff to learn here, but mostly you only need the basic principles to get started.
 
-A quick intro to electricity.
+You need complete circuits: the electrons must flow (electrons expand consciousness). 
 
-You need complete circuits: the electrons must flow (electrons expand consciousness). Your USB connection to your laptop provides just under 5 volts of power while you're connected. You'll need a battery when you're not.
+volts: voltage, or the potential to flow. Think of this as water pressure.
 
-Your I/O devices need power too!  Generally your board wil have two connections:  a live *positive* connector, at 5V or 3V typically for these boards, and a *ground* or *negative*. 
+amps: current, or how much water is flowing.
 
-Order doesn't matter except for diodes, which go only one way by definition! Note that an LED is a diode, so this is a fact you'll need to remember for the very first circuit you make in all these workshops.
+ohms: resistance, or how how wide the water pipe is (wide pipes are lower resistance)
 
-positive: longer wire (to 5V)
-negative: shorter wire (to ground)
-put a resistor in there somewhere or it'll pop
+### How to do it
+
+Step 1: provide power to the board. Your USB connection to your laptop provides just under 5 volts of power while you're connected. You'll need a battery when you're not. 
+
+Step 2: Next you tap off the board's power supply to feed your I/O devices. Your I/O devices need power too! Generally your board will have two connections: a live *positive* connector, at 5V or 3V typically for these boards, and a *ground* or *negative*. 
+
+Current goes *in* to an input's 5V/+ pin and then *out* through the ground. (Well, actually the electrons flow the other way, but ssshh, don't tell anybody.)
+
+For simpler parts like resistors or buttons, order doesn't matter. Order *does* matter for diodes, which go only one way by definition! Note that an LED is a diode, so this is a fact you'll need to remember for the very first circuit you make in all these workshops.
+
+* positive: longer wire (to 5V)
+* negative: shorter wire (to ground)
+* put a resistor in there somewhere or it'll pop
 
 Arduinos run at 5V and so do all the gizmos designed to work with them. You'll also get lots of things designed to run at 3.3V, and you'll learn how to change the voltage level of your circuit down. 
 
@@ -159,10 +176,8 @@ Practical Electronics for Inventors
 http://www.amazon.com/Practical-Electronics-Inventors-2-E/dp/0071452818
 
 
+
 ### How to learn how to build things
-
-### An aside on problem solving in new topic areas
-
 
 ### Where to get more help
 
@@ -170,7 +185,6 @@ http://www.amazon.com/Practical-Electronics-Inventors-2-E/dp/0071452818
 
 
 ## Conclusion
-
 
 
 
