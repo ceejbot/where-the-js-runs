@@ -6,19 +6,12 @@ About fifteen years ago, I had a cat who liked to wander. He'd vanish off to goo
 
 So I set out to figure out how.
 
-- use radios? transponder on his collar? triangulate?
-- wait, what kind of radio? that radio looks way too big to put on the cat. Should I set three up in corners of my yard, but a transponder on him, and triangulate? How can I do this without spending a zillion dollars?
-- dream of tracking my cat went unfulfilled and I forgot about it.
+Use radios? transponder on his collar? triangulate?
 
-### The dream
+Wait, what kind of radio? that radio looks way too big to put on the cat. Should I set three up in corners of my yard, but a transponder on him, and triangulate? How can I do this without spending a zillion dollars?
 
-Maybe you have a dream like that. Something you've always wanted to do, if only you could.
+Dream of tracking my cat went unfulfilled and I forgot about it.
 
-- run sensors in your garden
-- put a video camera on your dog
-- turn your lights on when you get home, without paying a lot of money for the fun
-
-Ask the audience what their project is. Get a couple of people to shout it out.
 
 ### Why stuff is possible now
 
@@ -28,14 +21,16 @@ GPS modules were the size of a postage stamp. Lithium polymer batteries were eve
 
 My cat tracker dream and your [specific] dream can become reality today. It doesn't take expensive hardware or giant batteries. 
 
-### Some projects
+### The dream
 
+Maybe you have a dream like that. Something you've always wanted to do, if only you could.
 
-examples: 
-
+- put a video camera on your dog
 - reading a moisture sensor, noting that it's below a threshold, then flipping a relay to turn on a sprinkler
-- reading incoming data from a GPS module
 - streaming in video from a camera, doing some pattern-matching on the image, then turning your nodecopter to a new heading
+- turn your lights on when you get home, without paying a lot of money for the fun
+
+Ask the audience what their project is. Get a couple of people to shout it out.
 
 ### Make the dream reality
 
@@ -43,23 +38,23 @@ Now we're going to get into details. My goal is to spend the next twenty minutes
 
 ## Development
 
+You ready? Let's dive.
+
 ### The basics
 
-The computers are little boards with tiny low-power processors on them, often older chips. They'll usually have some flash memory where you store the code you're runing, and a whole bunch of *easily accessible* electrical contact points. These contact points are called GPIO pins, or "general purpose input/output pins", or usually just `pins`. Most of them will also have USB somewhere for easy access from your regular-sized computer.
+The computers are little boards with tiny low-power processors on them, often older chips. They'll usually have some flash memory where you store the code you're runing, and a whole bunch of *easily accessible* electrical contact points. You'll hear these contact points called `pins`. This is what distinguishes a hackable hardware from ordinary small computers-- the ability to hook up sensors on the pins.
+
+Most of them will also have USB somewhere for easy access from your regular-sized computer. You do serial over USB. This gives you a console-- the ability to see logs, and to send commands.
 
 The boards look like this (shot of arduino), bare things with all the elements hanging out, easy to get at.
 
 You'll wire up input devices to some of the pins. For example, you might hook up a temperature sensor to one of the pins of your Arduino. Output devices get hooked up to other pins. You read data from the input pins, make decisions about it, then write to the output pins to make something happen. Sound familiar? It's just programming. It's just at a lower level in the computer stack than you've done it before.
 
-Then you make sure everything has power.
-
 ## Boards
 
-### Survey of the possibilities
+So what are these board things? How do you get them? The most famous one is the Arduino. You've heard of them, I bet. 
 
 #### the arduino family
-
-[ closeup of Arduino ]
 
 This is the Arduino Uno, responsible for kicking off the current madness.
  
@@ -187,6 +182,7 @@ http://www.amazon.com/Practical-Electronics-Inventors-2-E/dp/0071452818
 ## Conclusion
 
 
+Hardware programming is more accessible than it's ever been before. If you want to learn about it, now is the time. If you've ever had a whacky dream involving robotics, or video cameras pointed at interesting things, or home automation, now is the time. It's cheap, it's available by mail-order, it's programmable in a language that doesn't give you hives. You can do it in javascript. You want to be a maker? Go do it now.
 
 
 
