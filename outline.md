@@ -48,6 +48,8 @@ The boards look like this (shot of arduino), bare things with all the elements h
 
 You'll wire up input devices to some of the pins. For example, you might hook up a temperature sensor to one of the pins of your Arduino. Output devices get hooked up to other pins. You read data from the input pins, make decisions about it, then write to the output pins to make something happen. Sound familiar? It's just programming. It's just at a lower level in the computer stack than you've done it before.
 
+Software is a back-formation from hardware, after all. It's just melted and squishable hardware.
+
 ## Boards
 
 So what are these board things? How do you get them? The most famous one is the Arduino, which you've probably heard about.
@@ -69,7 +71,6 @@ You have heard about programming Arduino with javascript! You can do this! You s
 https://github.com/jgautier/firmata
 
 Why do you do this? Because the APIs are so much nicer in JS than they are in C. the [Johnny-Five](https://github.com/rwaldron/johnny-five) library is a lovely way to interact with hardware.
-
 
 ```C
 int ledPin = 9; // 9 is a PWM pin with a ~ next to it
@@ -214,17 +215,19 @@ http://www.amazon.com/Practical-Electronics-Inventors-2-E/dp/0071452818
 
 Most of the things you'll hook up will also have some kind of data that needs transmitting as well. Even something as simple as a button has a signal to send. So you power it, then you run a jumper from the button's signal line to one of the digital pins on your device. Then you write code to read it.
 
-Complicated devices like Bluetooth modules or GPS modules will have more complicated connections. You'll connect receive and transmit lines to the Arduino's digital pins. When in doubt, consult the circuit diagrams on sites like Adafruit or the JohnnyFive docs. 
+Complicated devices like Bluetooth modules or GPS modules will have more complicated connections. You'll connect receive and transmit lines to the Arduino's digital pins. On my cat tracker, data flows from GPS -> Teensy over the main serial connection. One wire for TX, one wire for RX. The Teensy then talks to a Bluetooth module over another serial connection. Both modules also get powered from the same battery that powers the Teensy.
+
+When in doubt, consult the circuit diagrams on sites like Adafruit or the JohnnyFive docs. You can build circuits slowly, one block at a time, the same way you build software. 
 
 ### Where to get more help
 
 My salvation on that first hack day was the Johnny Five docs. I had no idea what was going on with the Arduino, though I did bring some very dusty experience reading circuit diagrams from college days. I knew what serial was, more or less, and I knew I wasn't going to get shocked by anything.
 
+I spent a lot of time reading Adafruit tutorials to figure out how things worked. Surely there is some great mystery to talking to a GSP module, I thought. It's arcane and difficult, right?
 
-
+Not so much. There's a protocol. It's documented. The hard parts of doing serial communication over the wires are already done for you. All you have to do is decide what the data means, which is exactly what you've always been doing when writing software. The insight here is that there's nothing special going on. It's just another pile of jargon to learn, another set of trivia to store away. And to be honest, the language shift isn't so bad either. You'll step over into C++ when you need to.
 
 ## Conclusion
-
 
 Hardware programming is more accessible than it's ever been before. If you want to learn about it, now is the time. If you've ever had a whacky dream involving robotics, or video cameras pointed at interesting things, or home automation, now is the time. It's cheap, it's available by mail-order, it's programmable in a language that doesn't give you hives. You can do it in javascript. You want to be a maker? Go do it now.
 
