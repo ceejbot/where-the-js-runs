@@ -70,11 +70,42 @@ https://github.com/jgautier/firmata
 
 Why do you do this? Because the APIs are so much nicer in JS than they are in C. the [Johnny-Five](https://github.com/rwaldron/johnny-five) library is a lovely way to interact with hardware.
 
-[example: same code snippet in C++ vs JohnnyFive]
 
-The gorgeous thing here is that javascript's comfort with async code is perfect here. Hardware is just another source of kinda slow I/O, just like a database or a network request. Data comes in from the sensor *sometimes*, and the callback fires when it does.
+```C
+int ledPin = 9; // 9 is a PWM pin with a ~ next to it
+int direction = 1;
+int fade = 0;
 
-The downside here is that if you want to write Javascript to control an Arduino, you need a host computer to run node. You're tethered. For lots of applications this is fine, but sometimes you want to be mobile. Say, you're building something you're going to attach to a cat collar. Before long you'll be writing C++ for your Arduino. 
+void setup() { } 
+
+void loop()
+{
+	analogWrite(ledPin, fade);
+
+	fade += direction;
+	if ((fade >= 255) || (fade <= 0))
+		direction = -1 * direction;
+
+	delay(15);
+}
+```
+
+
+```javascript
+var five = require("johnny-five");
+var board = new five.Board();
+
+board.on("ready", function()
+{
+	// 9 is a PWM pin with a ~ next to it
+	var led = new five.Led({ pin: 9 });
+	led.pulse();
+});
+```
+
+The gorgeous thing is that javascript's comfort with async code is perfect here. Hardware is just another source of kinda slow I/O, just like a database or a network request. Data comes in from the sensor *sometimes*, and the callback fires when it does.
+
+The downside is that if you want to write Javascript to control an Arduino, you need a host computer to run node. You're tethered. For lots of applications this is fine, but sometimes you want to be mobile. Say, you're building something you're going to attach to a cat collar. Before long you'll be writing C++ for your Arduino. 
 
 Once you're untethered there are all kinds of tiny variations on the Arduino you can use. They're small enough to tuck into out of the way places or be carried around by a grumpy cat. The one I'm using for my project is called the Teensy. There are some even smaller than this. The downside is that the smaller they get, the harder to use they become. Less memory, for instance.
 
@@ -128,7 +159,6 @@ Heavy processing load, like computer vision? Probably a Beagle.
 
 Need video output? Probably a Raspberry Pi. The Pi is an odd platform but it's easily available & lots of people have written software for it already.
 
-
 Okay! So you're starting with an Arduino, and you've found a nifty moisture sensor so you can tell when your plant needs watering. How to you get them talking to each other?
 
 ### Power everything
@@ -174,12 +204,10 @@ In JohnnyFive, this is nice:
 
 ```javascript
 var five = require("johnny-five");
-var board, button;
-
-board = new five.Board();
+var board = new five.Board();
 board.on("ready", function()
 {
-	button = new five.Button(8); // signal goes into arduino pin 8
+	var button = new five.Button(8); // signal goes into arduino pin 8
 	button.on('down', function() { console.log('on'); });
 	button.on('up', function() { console.log('off'); });
 	button.on('hold', function() { console.log('holding'); });
