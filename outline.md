@@ -92,18 +92,32 @@ void loop()
 
 
 ```javascript
-var five = require("johnny-five");
+var five = require('johnny-five');
 var board = new five.Board();
 
-board.on("ready", function()
+board.on('ready', function()
 {
-	// 9 is a PWM pin with a ~ next to it
+	// using the same PWM pin
 	var led = new five.Led({ pin: 9 });
 	led.pulse();
 });
 ```
 
-The gorgeous thing is that javascript's comfort with async code is perfect here. Hardware is just another source of kinda slow I/O, just like a database or a network request. Data comes in from the sensor *sometimes*, and the callback fires when it does.
+[[ Talk about the differences visible in those two code samples. ]]
+
+The gorgeous thing is that javascript's comfort with async code is perfect here. Hardware is just another source of kinda slow I/O, just like a database or a network request. Data comes in from the sensor *sometimes*, and the callback fires when it does. Here's a button example with JohnnyFive:
+
+```javascript
+var five = require("johnny-five");
+var board = new five.Board();
+board.on("ready", function()
+{
+	var button = new five.Button(8); // signal goes into arduino pin 8
+	button.on('down', function() { console.log('on'); });
+	button.on('up', function() { console.log('off'); });
+	button.on('hold', function() { console.log('holding'); });
+});
+```
 
 The downside is that if you want to write Javascript to control an Arduino, you need a host computer to run node. You're tethered. For lots of applications this is fine, but sometimes you want to be mobile. Say, you're building something you're going to attach to a cat collar. Before long you'll be writing C++ for your Arduino. 
 
@@ -199,20 +213,6 @@ http://www.amazon.com/Practical-Electronics-Inventors-2-E/dp/0071452818
 ## Data must flow too
 
 Most of the things you'll hook up will also have some kind of data that needs transmitting as well. Even something as simple as a button has a signal to send. So you power it, then you run a jumper from the button's signal line to one of the digital pins on your device. Then you write code to read it.
-
-In JohnnyFive, this is nice:
-
-```javascript
-var five = require("johnny-five");
-var board = new five.Board();
-board.on("ready", function()
-{
-	var button = new five.Button(8); // signal goes into arduino pin 8
-	button.on('down', function() { console.log('on'); });
-	button.on('up', function() { console.log('off'); });
-	button.on('hold', function() { console.log('holding'); });
-});
-```
 
 Complicated devices like Bluetooth modules or GPS modules will have more complicated connections. You'll connect receive and transmit lines to the Arduino's digital pins. When in doubt, consult the circuit diagrams on sites like Adafruit or the JohnnyFive docs. 
 
