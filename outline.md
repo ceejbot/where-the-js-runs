@@ -21,6 +21,8 @@ GPS modules were the size of a postage stamp. Lithium polymer batteries were eve
 
 My cat tracker dream and your [specific] dream can become reality today. It doesn't take expensive hardware or giant batteries. 
 
+(mention running a hack day)
+
 ### The dream
 
 Maybe you have a dream like that. Something you've always wanted to do, if only you could. What do you want to do? Tell me!
@@ -49,6 +51,37 @@ The boards look like this (shot of arduino), bare things with all the elements h
 You'll wire up input devices to some of the pins. For example, you might hook up a temperature sensor to one of the pins of your Arduino. Output devices get hooked up to other pins. You read data from the input pins, make decisions about it, then write to the output pins to make something happen. Sound familiar? It's just programming. It's just at a lower level in the computer stack than you've done it before.
 
 Software is a back-formation from hardware, after all. It's just melted and squishable hardware.
+
+### Power everything
+
+Electricity.
+
+Now we come to one of those intimidating topics. Fear not, I say! There's a lot of stuff to learn here, but mostly you only need the basic principles to get started.
+
+You need complete circuits: the electrons must flow (electrons expand consciousness). 
+
+But you do need to know a little bit. (diode slide)
+
+### How to do it
+
+Step 1: provide power to the board. Your USB connection to your laptop provides just under 5 volts of power while you're connected. You'll need a battery when you're not. 
+
+Step 2: Next you tap off the board's power supply to feed your I/O devices. Your I/O devices need power too! Generally your board will have two connections: a live *positive* connector, at 5V or 3V typically for these boards, and a *ground* or *negative*. 
+
+Current goes *in* to an input's 5V/+ pin and then *out* through the ground. (Well, actually the electrons flow the other way, but ssshh, don't tell anybody.)
+
+For simpler parts like resistors or buttons, order doesn't matter. Order *does* matter for diodes, which go only one way by definition! Note that an LED is a diode, so this is a fact you'll need to remember for the very first circuit you make in all these workshops.
+
+* positive: longer wire (to 5V)
+* negative: shorter wire (to ground)
+* put a resistor in there somewhere or it'll pop
+Arduinos run at 5V and so do all the gizmos designed to work with them. You'll also get lots of things designed to run at 3.3V, and you'll learn how to change the voltage level of your circuit down. 
+
+To learn more:
+
+Practical Electronics for Inventors
+http://www.amazon.com/Practical-Electronics-Inventors-2-E/dp/0071452818
+
 
 ## Boards
 
@@ -122,7 +155,7 @@ board.on("ready", function()
 
 The downside is that if you want to write Javascript to control an Arduino, you need a host computer to run node. You're tethered. For lots of applications this is fine, but sometimes you want to be mobile. Say, you're building something you're going to attach to a cat collar. Before long you'll be writing C++ for your Arduino. 
 
-Once you're untethered there are all kinds of tiny variations on the Arduino you can use. They're small enough to tuck into out of the way places or be carried around by a grumpy cat. The one I'm using for my project is called the Teensy. There are some even smaller than this. The downside is that the smaller they get, the harder to use they become. Less memory, for instance.
+Once you're untethered there are all kinds of tiny variations on the Arduino you can use. They're small enough to tuck into out of the way places or be carried around by a grumpy cat. The one I'm using for my project is called the Teensy. I'm writing C++ to control a GPS logger and a Bluetooth module, because I need my cat tracker to be mobile.
 
 Let's suppose we want some more memory. Let's move up a notch to the other computer making this possible.
 
@@ -175,40 +208,6 @@ Heavy processing load, like computer vision? Probably a Beagle.
 Need video output? Probably a Raspberry Pi. The Pi is an odd platform but it's easily available & lots of people have written software for it already.
 
 Okay! So you're starting with an Arduino, and you've found a nifty moisture sensor so you can tell when your plant needs watering. How to you get them talking to each other?
-
-### Power everything
-
-Electricity.
-
-Now we come to one of those intimidating topics. Fear not, I say! There's a lot of stuff to learn here, but mostly you only need the basic principles to get started.
-
-You need complete circuits: the electrons must flow (electrons expand consciousness). 
-
-volts: voltage, or the potential to flow. Think of this as water pressure.
-
-amps: current, or how much water is flowing.
-
-ohms: resistance, or how how wide the water pipe is (wide pipes are lower resistance)
-
-### How to do it
-
-Step 1: provide power to the board. Your USB connection to your laptop provides just under 5 volts of power while you're connected. You'll need a battery when you're not. 
-
-Step 2: Next you tap off the board's power supply to feed your I/O devices. Your I/O devices need power too! Generally your board will have two connections: a live *positive* connector, at 5V or 3V typically for these boards, and a *ground* or *negative*. 
-
-Current goes *in* to an input's 5V/+ pin and then *out* through the ground. (Well, actually the electrons flow the other way, but ssshh, don't tell anybody.)
-
-For simpler parts like resistors or buttons, order doesn't matter. Order *does* matter for diodes, which go only one way by definition! Note that an LED is a diode, so this is a fact you'll need to remember for the very first circuit you make in all these workshops.
-
-* positive: longer wire (to 5V)
-* negative: shorter wire (to ground)
-* put a resistor in there somewhere or it'll pop
-Arduinos run at 5V and so do all the gizmos designed to work with them. You'll also get lots of things designed to run at 3.3V, and you'll learn how to change the voltage level of your circuit down. 
-
-To learn more:
-
-Practical Electronics for Inventors
-http://www.amazon.com/Practical-Electronics-Inventors-2-E/dp/0071452818
 
 
 ## Data must flow too
