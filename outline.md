@@ -226,6 +226,8 @@ I spent a lot of time reading Adafruit tutorials to figure out how things worked
 
 Not so much. There's a protocol. It's documented. The hard parts of doing serial communication over the wires are already done for you. All you have to do is decide what the data means, which is exactly what you've always been doing when writing software. The insight here is that there's nothing special going on. It's just another pile of jargon to learn, another set of trivia to store away. And to be honest, the language shift isn't so bad either. You'll step over into C++ when you need to.
 
+http://node-ardx.org
+
 ## Conclusion
 
 Hardware programming is more accessible than it's ever been before. If you want to learn about it, now is the time. If you've ever had a whacky dream involving robotics, or video cameras pointed at interesting things, or home automation, now is the time. It's cheap, it's available by mail-order, it's programmable in a language that doesn't give you hives. You can do it in javascript. You want to be a maker? Go do it now.
