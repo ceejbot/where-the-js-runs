@@ -21,8 +21,6 @@ GPS modules were the size of a postage stamp. Lithium polymer batteries were eve
 
 My cat tracker dream and your [specific] dream can become reality today. It doesn't take expensive hardware or giant batteries. 
 
-(mention running a hack day)
-
 ### The dream
 
 Maybe you have a dream like that. Something you've always wanted to do, if only you could. What do you want to do? Tell me!
@@ -142,9 +140,9 @@ board.on('ready', function()
 The gorgeous thing is that javascript's comfort with async code is perfect here. Hardware is just another source of kinda slow I/O, just like a database or a network request. Data comes in from the sensor *sometimes*, and the callback fires when it does. Here's a button example with JohnnyFive:
 
 ```javascript
-var five = require("johnny-five");
+var five = require('johnny-five');
 var board = new five.Board();
-board.on("ready", function()
+board.on('ready', function()
 {
 	var button = new five.Button(8); // signal goes into arduino pin 8
 	button.on('down', function() { console.log('on'); });
