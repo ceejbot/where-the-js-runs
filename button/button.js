@@ -8,6 +8,8 @@ board.on('ready', function()
 	var button = new five.Button(8);
 	board.repl.inject({ button: button });
 
+	// Fun button facts!
+	// https://learn.sparkfun.com/tutorials/pull-up-resistors/what-is-a-pull-up-resistor
 	button.on('down', function()
 	{
 		console.log('on');
