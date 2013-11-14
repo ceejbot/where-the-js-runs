@@ -12,7 +12,6 @@ These are the things you want to do with microcontrollers: move things, turn thi
 
 The MCs you'll choose for hardhware hacking will have lots of accessible pins.
 
-
 classic way to connect to microcontrollers is with a breadboard
 everything has to share a ground
 
