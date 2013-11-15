@@ -12,3 +12,10 @@ Links from the presentation:
 [Nodebots](http://nodebots.io)
 
 [Arduino Experimenter's Kit in Node.js](http://node-ardx.org)
+
+
+process.stdin.setEncoding('utf8');
+process.stdin.on('data', function(keypress)
+{
+	handleKey(keypress);
+}
