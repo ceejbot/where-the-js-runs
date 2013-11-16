@@ -13,9 +13,4 @@ Links from the presentation:
 
 [Arduino Experimenter's Kit in Node.js](http://node-ardx.org)
 
-
-process.stdin.setEncoding('utf8');
-process.stdin.on('data', function(keypress)
-{
-	handleKey(keypress);
-}
+The slides are [on SpeakerDeck](https://speakerdeck.com/ceejbot/where-does-the-javascript-run-anyway).
